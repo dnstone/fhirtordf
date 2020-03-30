@@ -99,7 +99,8 @@ def proc_file(infile: str, outfile: str, opts: Namespace) -> bool:
 
 def serialize_graph(g: Graph, outfile: str, opts: Namespace) -> None:
     if outfile:
-        g.serialize(outfile, format=opts.format)
+        with open(outfile, mode='wb') as fp:
+            g.serialize(fp, format=opts.format)
     else:
         print(g.serialize(format=opts.format).decode())
 
