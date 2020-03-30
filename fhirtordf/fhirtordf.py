@@ -85,6 +85,8 @@ def proc_file(infile: str, outfile: str, opts: Namespace) -> bool:
                          do_continuations=not opts.nocontinuation, replace_narrative_text=bool(opts.nonarrative),
                          metavoc=opts.fhir_metavoc)
 
+    os.makedirs(os.path.dirname(outfile), exist_ok=True)
+
     # If we aren't carrying graph in opts, we're doing a file by file transformation
     if g:
         if not opts.graph:
